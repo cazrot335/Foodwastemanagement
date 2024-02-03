@@ -9,10 +9,6 @@ const app = express();
 app.use(bodyParser.json()); 
 
 
-app.get("/", (req, res) => {
-    console.log(request);
-    return res.status(200).send("Hello World");
-});
  //create user
 app.post('/new/ngo', async(req, res) => {
     try{
