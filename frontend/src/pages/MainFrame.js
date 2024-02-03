@@ -83,7 +83,7 @@ const LoginRoot = styled.div`
 const MainFrame = () => {
   return (
     <LoginRoot>
-      <Image18Icon alt="" src="/image-181@2x.png" />
+      <Image18Icon alt="" src="/image-18@2x.png" />
       <LoginChild />
       <Email>EMAIL</Email>
       <Email>EMAIL</Email>
