@@ -68,7 +68,7 @@ const EmailLine = styled.div`
   }
 `;
 const EmailInput = styled.input`
-  width: 68px;
+
   border: none;
   outline: none;
   background-color: transparent;
@@ -160,6 +160,26 @@ const PasswordLineFrame = styled.div`
     flex-wrap: wrap;
   }
 `;
+
+const Button = styled.div`
+
+color:white;
+cursor: pointer;
+border: none;
+padding: 0;
+align-items: center;
+padding-top:20px;
+padding-bottom: 20px;
+padding-left: 120px;
+padding-right: 120px;
+  position: relative;
+  border-radius: var(--br-41xl);
+  background: linear-gradient(90deg, #fffa27, #a9e048 33.39%, #44c16e);
+  max-width: 100%;
+  z-index: 2;
+  
+ `;
+
 const InnerRectangle = styled.div`
   align-self: stretch;
   width: 321px;
@@ -254,25 +274,21 @@ const FrameComponent = () => {
         <LogIn>Log In</LogIn>
       </LogInWrapper>
       <EmailTextboxParent>
-        <EmailTextbox />
         <UserIcon alt="" src="/user@2x.png" />
         <EmailLine />
         <EmailInput placeholder="Email" type="text" />
       </EmailTextboxParent>
       <LockIconFrame>
         <PasswordLineFrame>
-          <EmailTextbox />
           <LockIcon loading="eager" alt="" src="/lock@2x.png" />
           <PasswordLine />
           <InputPassword>
-            <Password>Password</Password>
+            {/* this is password input */}
+            <EmailInput placeholder="Password" type="password" />
           </InputPassword>
         </PasswordLineFrame>
         <BackgroundRectangle>
-          <LoginButton>
-            <InnerRectangle onClick={onInnerRectangleClick} />
-            <Login>LOGIN</Login>
-          </LoginButton>
+         <Button onClick={onInnerRectangleClick}>Login</Button>
         </BackgroundRectangle>
       </LockIconFrame>
     </RectangleParentRoot>

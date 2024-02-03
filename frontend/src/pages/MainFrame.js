@@ -85,8 +85,7 @@ const MainFrame = () => {
     <LoginRoot>
       <Image18Icon alt="" src="/image-18@2x.png" />
       <LoginChild />
-      <Email>EMAIL</Email>
-      <Email>EMAIL</Email>
+      
       <Email>EMAIL</Email>
       <LoginItem />
       <Password>PASSWORD</Password>
