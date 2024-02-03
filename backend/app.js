@@ -25,6 +25,7 @@ app.post('/new/ngo', async(req, res) => {
             email: req.body.email,
             address: req.body.address,
             city: req.body.city,
+            password: req.body.password,
             Authid: req.body.Authid
         });
         res.status(200).json({
@@ -60,17 +61,24 @@ app.post('/new/donor', async(req, res) => {
     }
 });
 
-//get all users
-app.get("/donors", async (req, res) => {
+//login for ngo
+
+app.post('/login/ngo', async(req, res) => {
     try {
-        const donors = await Donor.find();
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(400).send({ message: 'user not found' });
+        }
+        if (user.password !== req.body.password) {
+            return res.status(400).send({ message: 'invalid password' });
+        }
         res.status(200).json({
             success: true,
-            donors
+            user
         });
     } catch (error) {
-        console.log("error", error);
-        return res.status(500).send("error");
+        console.log('error', error);
+        return res.status(500).send('error');
     }
 });
 

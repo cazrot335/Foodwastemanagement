@@ -21,6 +21,10 @@ const Schema = mongoose.Schema(
             type: String,
             required: true
         },
+        password:{
+            type: String,
+            required: true
+        },
         Authid:{
             type: String,
             required: true
