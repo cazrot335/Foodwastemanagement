@@ -74,7 +74,9 @@ const PoorAndNeedyText = styled.div`
     gap: var(--gap-15xl);
   }
 `;
-const LoginButton = styled.div`
+const Button = styled.div`
+align-items: center;
+
   position: absolute;
   top: 0px;
   left: 0px;
@@ -85,13 +87,7 @@ const LoginButton = styled.div`
   cursor: pointer;
   z-index: 1;
 `;
-const Login = styled.b`
-  position: absolute;
-  top: 14px;
-  left: 111px;
-  line-height: 101%;
-  z-index: 2;
-`;
+
 const ButtonLabel = styled.div`
   width: 321px;
   height: 76px;
@@ -99,6 +95,7 @@ const ButtonLabel = styled.div`
   max-width: 100%;
   white-space: nowrap;
   font-size: var(--font-size-26xl);
+  text-align: center;
 `;
 const YourSupportText = styled.div`
   align-self: stretch;
@@ -120,10 +117,11 @@ const YourSupportText = styled.div`
 `;
 const YourSupportTextWrapper = styled.section`
   width: 1503px;
+  margin-left: 350px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 84px 0px 0px;
   box-sizing: border-box;
   max-width: 100%;
@@ -193,27 +191,26 @@ const MacBookAir1 = () => {
       <ResQHarborSection />
       <FourthLevelFrame>
         <FourthLevelFrameChild alt="" src="/rectangle-59@2x.png" />
-        <Image18Icon loading="eager" alt="" src="/image-18@2x.png" />
+       
         <YourSupportTextWrapper>
-          <YourSupportText>
-            <PoorAndNeedyText>
-              <YourSupportCanContainer>
-                <Your>{`Your `}</Your>
-                <Support>support</Support>
-                <Your> can help us a lot</Your>
-              </YourSupportCanContainer>
-              <ThisHelpIs>
-                This help is focussed towards the poor and the needy who live
-                among us within our society and endeavours to bring about a
-                change in their life.
-              </ThisHelpIs>
-            </PoorAndNeedyText>
-            <ButtonLabel>
-              <LoginButton onClick={onLoginButtonClick} />
-              <Login>{`Login `}</Login>
-            </ButtonLabel>
-          </YourSupportText>
-        </YourSupportTextWrapper>
+        <YourSupportText>
+          <PoorAndNeedyText>
+            <YourSupportCanContainer>
+              <Your>{`Your `}</Your>
+              <Support>support</Support>
+              <Your> can help us a lot</Your>
+            </YourSupportCanContainer>
+            <ThisHelpIs>
+              This help is focused towards the poor and the needy who live
+              among us within our society and endeavors to bring about a change
+              in their life.
+            </ThisHelpIs>
+          </PoorAndNeedyText>
+          <ButtonLabel>
+            <Button onClick={onLoginButtonClick}>Login</Button>
+          </ButtonLabel>
+        </YourSupportText>
+      </YourSupportTextWrapper>
       </FourthLevelFrame>
     </LandingRoot>
   );
