@@ -1,7 +1,7 @@
+import {  useState, } from "react";
 import styled from "styled-components";
-import EmailInput from "./EmailInput";
-import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const PleaseFillThe = styled.div`
   position: relative;
@@ -232,9 +232,41 @@ const CityFrameRoot = styled.div`
 
 const FormContainer = () => {
   const navigate = useNavigate();
-  const Register = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
+  const [ngoName,setNgoName] = useState('');
+  const [city,setCity] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [contact,setContact]= useState('');
+  const [id,setId]= useState('');
+  const[address,setAddress] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/new/ngo', {
+        Ngoname: ngoName,
+        city: city,
+        email: email,
+        password: password,
+        address: address,
+        Authid: id,
+        contactno: contact,
+      });
+
+      if (response.data.success) {
+        // If the login was successful, redirect to another page or show a success message
+        console.log('New user created:', response.data.newUser);
+      } else {
+        // Handle error (e.g., show a message to the user)
+        console.error('Error creating user:', response.data.message);
+      }
+    } catch (error) {
+      console.error('API request failed', error);
+      // Handle error (e.g., show a message to the user)
+    }
+  };
+
+
+
   return (
     <CityFrameRoot>
       <FillDetailsFrame>
@@ -246,7 +278,9 @@ const FormContainer = () => {
 
       {/* First additional container with two inputs */}
       <div >
-        <input style={{
+        <input 
+       
+        style={{
               
                 border:"1px solid #c1b9b9",
                 borderRadius: "10px",
@@ -263,7 +297,7 @@ const FormContainer = () => {
                 display: "inline-block",
                 marginRight: '15px',
              
-                zIndex: "1",}}  type="text" placeholder="NGO Name" />
+                zIndex: "1",}}  type="text" placeholder="NGO Name" onChange={e => setNgoName(e.target.value)} />
         <input
         style={{
           border:"1px solid #c1b9b9",
@@ -280,7 +314,7 @@ const FormContainer = () => {
           textAlign: "left",
           display: "inline-block",
          }}
-        type="text" placeholder="City" />
+        type="text" placeholder="City" onChange={e => setCity(e.target.value)} />
       </div>
 
       {/* Second additional container with two inputs */}
@@ -303,7 +337,7 @@ const FormContainer = () => {
     marginRight: '15px', // Corrected the syntax here
   }}
   type="text"
-  placeholder="Email"
+  placeholder="Email" onChange={e => setEmail(e.target.value)}
 />
 
         <input  style={{
@@ -321,7 +355,7 @@ const FormContainer = () => {
               color: "#c1b9b9",
               textAlign: "left",
               display: "inline-block",
-              marginRight:'10 px' ,}} type="text" placeholder="Password" />
+              marginRight:'10 px' ,}} type="text" placeholder="Password"  onChange={e => setPassword(e.target.value)} />
       </div>
 
       {/* Third additional container with two inputs */}
@@ -341,12 +375,12 @@ const FormContainer = () => {
               color: "#c1b9b9",
               textAlign: "left",
               display: "inline-block",
-              marginRight: '15px' ,}} type="text" placeholder="Contact.NO" />
+              marginRight: '15px' ,}} type="text" placeholder="Contact.NO"onChange={e => setContact(e.target.value)} />
         <input  style={{
               
               border:"1px solid #c1b9b9",
               borderRadius: "10px",
-              outline: "none",
+              outline: "none", 
               fontWeight: "500",
               fontFamily: "Urbanist",
               fontSize: "30px",
@@ -357,7 +391,7 @@ const FormContainer = () => {
               color: "#c1b9b9",
               textAlign: "left",
               display: "inline-block",
-              marginRight:'10 px' ,}} type="text" placeholder="Auth_id" />
+              marginRight:'10 px' ,}} type="text" placeholder="Auth_id"  onChange={e => setId(e.target.value)} />
       </div>
       
       <div>
@@ -382,7 +416,9 @@ const FormContainer = () => {
             fontSize: "30px",
             color: "#c1b9b9",
           }}
+
           placeholder="Address"
+          onChange={e => setAddress(e.target.value)}
           rows={9}
           cols={43}
         />
@@ -391,7 +427,7 @@ const FormContainer = () => {
       <AddressFrame>
         <PasswordFrame>
           <DonateFrame>
-            <Button onClick={Register}>Proceed</Button>
+            <Button onClick={handleLogin}>Proceed</Button>
           </DonateFrame>
         </PasswordFrame>
       </AddressFrame>

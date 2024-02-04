@@ -1,7 +1,7 @@
+import {  useState, } from "react";
 import styled from "styled-components";
-import EmailInput from "./EmailInput";
-import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const PleaseFillThe = styled.div`
   position: relative;
@@ -232,9 +232,39 @@ const CityFrameRoot = styled.div`
 
 const FormContainer2 = () => {
   const navigate = useNavigate();
-  const Register = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
+  const [shopName,setShopName] = useState('');
+  const [city,setCity] = useState('');
+  const [email, setEmail] = useState('');
+  
+  const [contact,setContact]= useState('');
+  
+  const[address,setAddress] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/new/donor', {
+        shopname: shopName,
+        city: city,
+        email: email,
+        
+        address: address,
+      
+        contactno: contact,
+      });
+
+      if (response.data.success) {
+        // If the login was successful, redirect to another page or show a success message
+        console.log('New user created:', response.data.newUser);
+      } else {
+        // Handle error (e.g., show a message to the user)
+        console.error('Error creating user:', response.data.message);
+      }
+    } catch (error) {
+      console.error('API request failed', error);
+      // Handle error (e.g., show a message to the user)
+    }
+  };
+
   return (
     <CityFrameRoot>
       <FillDetailsFrame>
@@ -246,7 +276,7 @@ const FormContainer2 = () => {
 
       {/* First additional container with two inputs */}
       <div >
-        <input style={{
+        <input onChange={e => setShopName(e.target.value)} style={{
               
                 border:"1px solid #c1b9b9",
                 borderRadius: "10px",
@@ -265,6 +295,7 @@ const FormContainer2 = () => {
              
                 zIndex: "1",}}  type="text" placeholder="Shop Name" />
         <input
+        onChange={e => setCity(e.target.value)}
         style={{
           border:"1px solid #c1b9b9",
           borderRadius: "10px",
@@ -286,6 +317,7 @@ const FormContainer2 = () => {
       {/* Second additional container with two inputs */}
       <div >
       <input
+      onChange={e => setEmail(e.target.value)}
   style={{
     border: "1px solid #c1b9b9",
     borderRadius: "10px",
@@ -306,7 +338,7 @@ const FormContainer2 = () => {
   placeholder="Email"
 />
 
-        <input  style={{
+        <input onChange={e => setContact(e.target.value)} style={{
               
               border:"1px solid #c1b9b9",
               borderRadius: "10px",
@@ -328,7 +360,7 @@ const FormContainer2 = () => {
     
       
       <div>
-      <textarea
+      <textarea onChange={e => setAddress(e.target.value)}
           style={{
             border: "1px solid #c1b9b9",
             backgroundColor: "rgba(255, 255, 255, 0.5)",
@@ -358,7 +390,7 @@ const FormContainer2 = () => {
       <AddressFrame>
         <PasswordFrame>
           <DonateFrame>
-            <Button onClick={Register}>Proceed</Button>
+            <Button onClick={handleLogin}>Proceed</Button>
           </DonateFrame>
         </PasswordFrame>
       </AddressFrame>
