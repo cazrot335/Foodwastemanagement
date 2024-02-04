@@ -255,6 +255,7 @@ const FormContainer = () => {
       if (response.data.success) {
         // If the login was successful, redirect to another page or show a success message
         console.log('New user created:', response.data.newUser);
+        navigate('/login');
       } else {
         // Handle error (e.g., show a message to the user)
         console.error('Error creating user:', response.data.message);
