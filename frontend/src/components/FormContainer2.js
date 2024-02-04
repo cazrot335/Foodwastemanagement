@@ -239,7 +239,7 @@ const FormContainer2 = () => {
   const [contact,setContact]= useState('');
   
   const[address,setAddress] = useState('');
-
+ const [time,setTime]=useState('');
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3000/new/donor', {
@@ -249,6 +249,7 @@ const FormContainer2 = () => {
         
         address: address,
       contactno: contact,
+      time:time,
       });
 
       if (response.data.success) {
@@ -356,7 +357,7 @@ const FormContainer2 = () => {
               marginRight:'10 px' ,}} type="text" placeholder="Contact No" />
       </div>
 
-     <input style={{
+     <input onChange={e => setTime(e.target.value)} style={{
               
               border:"1px solid #c1b9b9",
               borderRadius: "10px",
