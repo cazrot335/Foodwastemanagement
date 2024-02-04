@@ -230,7 +230,7 @@ const CityFrameRoot = styled.div`
   }
 `;
 
-const FormContainer = () => {
+const FormContainer2 = () => {
   const navigate = useNavigate();
   const Register = useCallback(() => {
     navigate("/");
@@ -263,7 +263,7 @@ const FormContainer = () => {
                 display: "inline-block",
                 marginRight: '15px',
              
-                zIndex: "1",}}  type="text" placeholder="NGO Name" />
+                zIndex: "1",}}  type="text" placeholder="Shop Name" />
         <input
         style={{
           border:"1px solid #c1b9b9",
@@ -321,44 +321,11 @@ const FormContainer = () => {
               color: "#c1b9b9",
               textAlign: "left",
               display: "inline-block",
-              marginRight:'10 px' ,}} type="text" placeholder="Password" />
+              marginRight:'10 px' ,}} type="text" placeholder="Contact No" />
       </div>
 
-      {/* Third additional container with two inputs */}
-      <div>
-        <input  style={{
-              
-              border:"1px solid #c1b9b9",
-              borderRadius: "10px",
-              outline: "none",
-              fontWeight: "500",
-              fontFamily: "Urbanist",
-              fontSize: "30px",
-              backgroundColor:"rgba(255, 255, 255, 0.5)" ,
-              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-              height: "60px",
-              position: "relative",
-              color: "#c1b9b9",
-              textAlign: "left",
-              display: "inline-block",
-              marginRight: '15px' ,}} type="text" placeholder="Contact.NO" />
-        <input  style={{
-              
-              border:"1px solid #c1b9b9",
-              borderRadius: "10px",
-              outline: "none",
-              fontWeight: "500",
-              fontFamily: "Urbanist",
-              fontSize: "30px",
-              backgroundColor:"rgba(255, 255, 255, 0.5)" ,
-              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-              height: "60px",
-              position: "relative",
-              color: "#c1b9b9",
-              textAlign: "left",
-              display: "inline-block",
-              marginRight:'10 px' ,}} type="text" placeholder="Auth_id" />
-      </div>
+     
+    
       
       <div>
       <textarea
@@ -403,4 +370,4 @@ const FormContainer = () => {
   );
 };
 
-export default FormContainer;
+export default FormContainer2;

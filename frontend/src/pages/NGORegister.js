@@ -49,9 +49,9 @@ const WeCanSaveContainer = styled.b`
   }
 `;
 const FormFrameParent = styled.div`
-  width: 1147px;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   padding: var(--padding-232xl) var(--padding-8xs) var(--padding-258xl) 0px;
@@ -128,14 +128,13 @@ const NGORegister = () => {
           <Image20Icon alt="" src="/image-20@2x.png" />
           <NameRectangleIcon alt="" src="/rectangle-frame@2x.png" />
         </FormFrame>
-        <WeCanSaveContainer>
-          <WeCanSave>{`We Can  Save The `}</WeCanSave>
-          <WeCanSave>Future</WeCanSave>
-        </WeCanSaveContainer>
+        <NGOInfoFrame>
+       
+       <FormContainer />
+     </NGOInfoFrame>
+       
       </FormFrameParent>
-      <NGOInfoFrame>
-        <FormContainer />
-      </NGOInfoFrame>
+     
     </NgoRegisterRoot>
   );
 };

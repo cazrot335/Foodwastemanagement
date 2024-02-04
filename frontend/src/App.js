@@ -61,8 +61,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<MacBookAir1 />} />
-      <Route path="/ngo-register" element={<NGORegister />} />
+      <Route path="/" element={<MacBookAir1 />} />  
+      <Route path="/ngo-register" element={<NGORegister />} />   
       <Route path="/login" element={<MainFrame />} />
       <Route path="/donor-register" element={<MainFrame1 />} />
       <Route path="/about" element={< About/>} />

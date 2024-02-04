@@ -125,8 +125,8 @@ const ResQHarborSection = () => {
   }, [navigate]);
 
   const onNeedDonationsTextClick = useCallback(() => {
-    // Please sync "Frame 81" to the project
-  }, []);
+   navigate('/ngo-register');
+  }, [navigate]);
 
   return (
     <LandingInnerRoot>
