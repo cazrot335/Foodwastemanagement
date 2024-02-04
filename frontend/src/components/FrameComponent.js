@@ -1,6 +1,9 @@
-import { useCallback } from "react";
+import {  useState, } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
+
 
 const FrameChild = styled.div`
   width: 583px;
@@ -262,10 +265,28 @@ const RectangleParentRoot = styled.div`
 
 const FrameComponent = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
 
-  const onInnerRectangleClick = useCallback(() => {
-    navigate("/donor-register");
-  }, [navigate]);
+  const handleLogin = async () => {
+    try {
+        const response = await axios.post('http://localhost:3000/login/ngo', {
+          email: email,
+          password: password,
+        });
+
+        if (response.data.success) {
+            // If the login was successful, redirect to another page
+            navigate('/');
+        } else {
+            // Handle error (e.g. show a message to the user)
+        }
+    } catch (error) {
+        console.error('Login failed', error);
+        // Handle error (e.g. show a message to the user)
+    }
+};
 
   return (
     <RectangleParentRoot>
@@ -273,10 +294,11 @@ const FrameComponent = () => {
       <LogInWrapper>
         <LogIn>Log In</LogIn>
       </LogInWrapper>
+      
       <EmailTextboxParent>
         <UserIcon alt="" src="/user@2x.png" />
         <EmailLine />
-        <EmailInput placeholder="Email" type="text" />
+        <EmailInput placeholder="Email" type="text" onChange={e => setEmail(e.target.value)} />
       </EmailTextboxParent>
       <LockIconFrame>
         <PasswordLineFrame>
@@ -284,11 +306,11 @@ const FrameComponent = () => {
           <PasswordLine />
           <InputPassword>
             {/* this is password input */}
-            <EmailInput placeholder="Password" type="password" />
+            <EmailInput placeholder="Password" type="password" value={password} onChange={e => setPassword(e.target.value)}  />
           </InputPassword>
         </PasswordLineFrame>
         <BackgroundRectangle>
-         <Button onClick={onInnerRectangleClick}>Login</Button>
+         <Button onClick={handleLogin}>Login</Button>
         </BackgroundRectangle>
       </LockIconFrame>
     </RectangleParentRoot>

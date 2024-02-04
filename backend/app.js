@@ -4,9 +4,11 @@ import mongoose from "mongoose";
 import { User } from "./schemaa/schema.js";
 import bodyParser from "body-parser";
 import { Donor } from "./schemaa/Donorschema.js";
+import cors from 'cors'
 
 const app = express();
 app.use(bodyParser.json()); 
+app.use(cors());
 
 
  //create user
@@ -77,7 +79,19 @@ app.post('/login/ngo', async(req, res) => {
         return res.status(500).send('error');
     }
 });
-
+// get request for all donors 
+app.get('/donors', async (req, res) => {
+    try {
+        const donors = await Donor.find({});
+        res.status(200).json({
+            success: true,
+            donors
+        });
+    } catch (error) {
+        console.log('error', error);
+        return res.status(500).send('error');
+    }
+});
 
 
 

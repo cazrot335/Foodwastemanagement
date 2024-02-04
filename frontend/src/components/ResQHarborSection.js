@@ -34,6 +34,7 @@ const AboutUs = styled.b`
   position: relative;
   display: inline-block;
   white-space: nowrap;
+  cursor: pointer;
 `;
 const AboutUsText = styled.div`
   display: flex;
@@ -115,6 +116,10 @@ const LandingInnerRoot = styled.div`
 const ResQHarborSection = () => {
   const navigate = useNavigate();
 
+  const onAboutUsClick = useCallback(() => {
+    navigate("/about");
+  }, [navigate]);
+
   const onWantToDonateClick = useCallback(() => {
     navigate("/donor-register");
   }, [navigate]);
@@ -133,7 +138,7 @@ const ResQHarborSection = () => {
         <ParentFrame>
           <ThirdLevelFrame>
             <AboutUsText>
-              <AboutUs>About us</AboutUs>
+            <AboutUs onClick={onAboutUsClick}>About us</AboutUs>
             </AboutUsText>
             <WantToDonate
               onClick={onWantToDonateClick}

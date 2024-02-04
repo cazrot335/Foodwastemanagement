@@ -9,6 +9,7 @@ import MacBookAir1 from "./pages/MacBookAir1";
 import NGORegister from "./pages/NGORegister";
 import MainFrame from "./pages/MainFrame";
 import MainFrame1 from "./pages/MainFrame1";
+import About from "./pages/About";
 
 function App() {
   const action = useNavigationType();
@@ -64,6 +65,7 @@ function App() {
       <Route path="/ngo-register" element={<NGORegister />} />
       <Route path="/login" element={<MainFrame />} />
       <Route path="/donor-register" element={<MainFrame1 />} />
+      <Route path="/about" element={< About/>} />
     </Routes>
   );
 }
