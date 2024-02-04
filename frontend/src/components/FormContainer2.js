@@ -254,7 +254,7 @@ const FormContainer2 = () => {
       if (response.data.success) {
         // If the login was successful, redirect to another page or show a success message
         console.log('New user created:', response.data.newUser);
-        navigate('/login');
+       
       } else {
         // Handle error (e.g., show a message to the user)
         console.error('Error creating user:', response.data.message);
@@ -356,7 +356,22 @@ const FormContainer2 = () => {
               marginRight:'10 px' ,}} type="text" placeholder="Contact No" />
       </div>
 
-     
+     <input style={{
+              
+              border:"1px solid #c1b9b9",
+              borderRadius: "10px",
+              outline: "none",
+              fontWeight: "500",
+              fontFamily: "Urbanist",
+              fontSize: "30px",
+              backgroundColor:"rgba(255, 255, 255, 0.5)" ,
+              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              height: "60px",
+              position: "relative",
+              color: "#c1b9b9",
+              textAlign: "left",
+              display: "inline-block",
+              marginRight:'10 px' ,}} type="text" placeholder="time" />
     
       
       <div>
