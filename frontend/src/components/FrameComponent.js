@@ -278,7 +278,7 @@ const FrameComponent = () => {
 
         if (response.data.success) {
             // If the login was successful, redirect to another page
-            navigate('/');
+            navigate('/search');
         } else {
             // Handle error (e.g. show a message to the user)
         }
