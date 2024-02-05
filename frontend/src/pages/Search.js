@@ -72,7 +72,7 @@ const SearchInput = ({ value, onChange }) => {
   return (
       <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search available timeslots"
           value={value}
           onChange={onChange}
           style={{ padding: '10px', border: 'none', outline: 'none', borderRadius: '20px 0 0 20px', width: '100%' }}
