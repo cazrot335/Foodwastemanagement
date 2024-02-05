@@ -10,7 +10,7 @@ const HeadingHero = () => {
             padding: '5px',
             marginBottom: '20px'
         }}>
-            <h1>Beautiful Heading</h1>
+            <h1>Available Donors</h1>
         </div>
     );
 };
