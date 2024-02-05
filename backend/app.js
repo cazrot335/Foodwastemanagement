@@ -46,7 +46,8 @@ app.post('/new/donor', async(req, res) => {
             contactno: req.body.contactno,
             email: req.body.email,
             address: req.body.address,
-            city: req.body.city
+            city: req.body.city,
+            time:req.body.time
         });
         res.status(200).json({
             success: true,
