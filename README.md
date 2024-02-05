@@ -3,7 +3,7 @@
 
 click here to visit the website by clicking on this link https://foodwastemanagement.vercel.app/
 
-FoodWasteManage Web App
+NOTE: Please install backend in your local machine , due to some issues in deployment kindly follow steps mentioned below .
 
 
 FoodWasteManage Web App
