@@ -5,6 +5,8 @@ click here to visit the website by clicking on this link https://foodwastemanage
 
 NOTE: Please install backend in your local machine , due to some issues in deployment kindly follow steps mentioned below .
 
+# !!! ONLY WORKS ON PC THAT TOO REQUIRE WINDOWS TO RUN NAVBAR ...
+
 
 FoodWasteManage Web App
 
