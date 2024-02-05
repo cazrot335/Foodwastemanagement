@@ -139,31 +139,37 @@ const SearchDonor = () => {
   };
 
   const handleSearch = async (searchTerm) => {
+    console.log('Search term:', searchTerm);
     try {
-      const response = await axios.get(`http://localhost:3000/donors?time=${searchInput}`);
-      setDonor(response.data.donors);
+        const response = await axios.get(`http://localhost:3000/search/donors?time=${searchTerm}`);
+        console.log('Search response:', response.data);
+        setDonor(response.data.donors);
     } catch (error) {
-      console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error);
     }
-  };
+};
+
+  
 
   return (
     <Container>
       <div className="main" style={{ backgroundColor: "#9CB371", color: "fff", }}>
         <HeadingHero />
-        <Searchbar>
+        {/* Pass handleSearch directly as the onSearch prop */}
+        <Searchbar onSearch={handleSearch}>
           <SearchInput
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <SearchButton onClick={handleSearch}>Search</SearchButton>
+          {/* Pass the handleSearch function to the onClick prop */}
+          <SearchButton onClick={() => handleSearch(searchInput)} />
         </Searchbar>
         <CardContainer>
           {arrangeData(donor).map((row, index) => (
             <Row key={index}>
               {row.map((donor) => (
                 <Card key={donor._id} className="donor-card">
-                  <p><strong>Shop Name:</strong> {donor.shopname}</p>
+                   <p><strong>Shop Name:</strong> {donor.shopname}</p>
                   <p><strong>Contact No:</strong> {donor.contactno}</p>
                   <p><strong>Email:</strong> {donor.email}</p>
                   <p><strong>Address:</strong> {donor.address}</p>

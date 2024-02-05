@@ -93,10 +93,18 @@ app.get('/donors', async (req, res) => {
         return res.status(500).send('error');
     }
 });
-app.get('/donors?', async (req, res) => {
+
+
+app.get('/search/donors', async (req, res) => {
     try {
-        const time = req.query.time; // Get the time from the query parameter
-        const donors = await Donor.find({ time: time }); // Search for donors with matching time
+        const timeValue = req.query.time.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+        console.log(`Searching for donors with time value: ${timeValue}`); // Log the time value
+        if (!timeValue) {
+            return res.status(400).send({ message: 'time value is required' });
+        }
+        // Use a regular expression to match the time value exactly, case-insensitively
+        const donors = await Donor.find({ time: new RegExp('^' + timeValue + '$', 'i') });
+        console.log(`Found ${donors.length} donors.`); // Log the number of donors found
         res.status(200).json({
             success: true,
             donors
