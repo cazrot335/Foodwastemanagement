@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Searchbar from '../components/Searchbar';
 
 const Card = styled.div`
   border: 1px solid #ccc;
@@ -34,9 +35,11 @@ const SearchDonor = () => {
 
   return (
     <div className="main">
+      <Searchbar />
       <CardContainer>
         {donor &&
           donor.map((donor) => (
+
             <Card key={donor._id} className="donor-card">
               <p><strong>Shop Name:</strong> {donor.shopname}</p>
               <p><strong>Contact No:</strong> {donor.contactno}</p>
