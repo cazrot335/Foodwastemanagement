@@ -93,6 +93,19 @@ app.get('/donors', async (req, res) => {
         return res.status(500).send('error');
     }
 });
+app.get('/donors?', async (req, res) => {
+    try {
+        const time = req.query.time; // Get the time from the query parameter
+        const donors = await Donor.find({ time: time }); // Search for donors with matching time
+        res.status(200).json({
+            success: true,
+            donors
+        });
+    } catch (error) {
+        console.log('error', error);
+        return res.status(500).send('error');
+    }
+});
 
 
 
