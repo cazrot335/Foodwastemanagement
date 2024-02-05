@@ -138,7 +138,7 @@ const SearchDonor = () => {
     return arrangedData;
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (searchTerm) => {
     try {
       const response = await axios.get(`http://localhost:3000/donors?time=${searchInput}`);
       setDonor(response.data.donors);
